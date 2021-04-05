@@ -4,9 +4,10 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Sign from './Sign';
 import UserProfile from './UserProfile';
+import { useSelector } from 'react-redux';
 
 const AppLayout = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
   return (
     <>
