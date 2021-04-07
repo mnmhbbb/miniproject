@@ -4,10 +4,10 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import Link from 'next/link';
-import useInput from '../hooks/useInput';
-import { loginAction } from '../reducers/user';
-import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/dist/client/router';
+import { useDispatch } from 'react-redux';
+import { loginRequestAction } from '../reducers/user';
+import useInput from '../hooks/useInput';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const LoginPage = () => {
 
   const onFinish = useCallback(() => {
     console.log(email, password);
-    dispatch(loginAction({ email, password }));
+    dispatch(loginRequestAction({ email, password }));
     router.push('/');
   }, [email, password]);
 

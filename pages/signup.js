@@ -1,17 +1,33 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { AiOutlineHome } from 'react-icons/ai';
 import { Form, Input, Checkbox, Button } from 'antd';
+import { useRouter } from 'next/router';
 import useInput from '../hooks/useInput';
+import { useDispatch, useSelector } from 'react-redux';
+import { SIGN_UP_REQUEST } from '../reducers/user';
 
 const SignupPage = () => {
+  const { signUpDone } = useSelector((store) => store.user);
   const [nickname, onChangeNickname] = useInput('');
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
   const [passwordConfirm, onChangePasswordConfirm] = useInput('');
+  const router = useRouter();
+  const dispatch = useDispatch();
 
-  const onSubmit = useCallback(() => {}, []);
+  useEffect(() => {
+    if (signUpDone) {
+      alert('회원가입이 완료되었습니다!');
+      router.push('/login');
+    }
+  });
+
+  const onFinish = useCallback(() => {
+    dispatch({ type: SIGN_UP_REQUEST });
+  }, []);
+
   return (
     <>
       <Head>
@@ -26,7 +42,7 @@ const SignupPage = () => {
         </a>
       </Link>
       <h1>회원가입</h1>
-      <Form name="register" scrollToFirstError onSubmit={onSubmit}>
+      <Form name="register" scrollToFirstError onFinish={onFinish}>
         <Form.Item
           name="nickname"
           label="닉네임"

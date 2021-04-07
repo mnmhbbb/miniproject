@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Col, Menu, Row, Input } from 'antd';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import Sign from './Sign';
 import UserProfile from './UserProfile';
-import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+
+const Global = styled.div`
+  .ant-row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  .ant-col {
+    padding: 10px !important;
+  }
+`;
 
 const AppLayout = ({ children }) => {
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const { me } = useSelector((store) => store.user);
 
   return (
-    <>
+    <Global>
       <Menu theme="dark" mode="horizontal">
         <Menu.Item>
           <Link href="/">
@@ -28,13 +40,13 @@ const AppLayout = ({ children }) => {
       </Menu>
       <Row gutter={8}>
         <Col xs={24} md={6}>
-          {isLoggedIn ? <UserProfile /> : <Sign />}
+          {me ? <UserProfile /> : <Sign />}
         </Col>
         <Col xs={24} md={18} style={{ background: '#e5e5e5' }}>
           {children}
         </Col>
       </Row>
-    </>
+    </Global>
   );
 };
 
