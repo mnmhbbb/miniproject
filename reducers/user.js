@@ -61,7 +61,6 @@ const reducer = (state = initialState, action) =>
         draft.logInLoading = false;
         draft.logInError = action.error;
         break;
-
       case LOG_OUT_REQUEST:
         draft.logOutLoading = true;
         draft.logOutError = null;
@@ -76,7 +75,6 @@ const reducer = (state = initialState, action) =>
         draft.logOutLoading = false;
         draft.logOutError = action.error;
         break;
-
       case SIGN_UP_REQUEST:
         draft.signUpLoading = true;
         draft.signUpError = null;

@@ -14,7 +14,7 @@ const Global = styled.div`
   }
 
   .ant-col {
-    padding: 10px !important;
+    padding: 0.5rem !important;
   }
 `;
 
@@ -34,17 +34,15 @@ const AppLayout = ({ children }) => {
             <a>프로필</a>
           </Link>
         </Menu.Item>
-        <Menu.Item>
-          <Input.Search style={{ verticalAlign: 'middle' }} />
-        </Menu.Item>
       </Menu>
       <Row gutter={8}>
-        <Col xs={24} md={6}>
+        <Col xs={24} md={4}>
           {me ? <UserProfile /> : <Sign />}
         </Col>
         <Col xs={24} md={18} style={{ background: '#e5e5e5' }}>
           {children}
         </Col>
+        <Col xs={24} md={4}></Col>
       </Row>
     </Global>
   );
