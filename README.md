@@ -8,9 +8,7 @@
 #### 1.1 크게 `/pages`와 `/components` 폴더로 나누어 관리
 ![tree](https://user-images.githubusercontent.com/66292371/114086488-a18d5f80-98ed-11eb-8ba0-9bcb5a3400f6.png)  
 - 넥스트는 별도의 Route를 작성할 필요없이 `pages`폴더에 작성한 파일이 자동으로 라우팅된다.
-- Redux와 Saga 미들웨어를 사용하기 위한 설정을 한다.  
-![tree](https://user-images.githubusercontent.com/66292371/114086632-ceda0d80-98ed-11eb-9b55-0709267b553d.png)  
-- `reducers`, `sagas` 폴더에 각각 `rootReducer`와 `rootSaga`로 각 리듀서와 사가를 합쳤고 `store`폴더에서 스토어 설정을 하였다.
+- Redux와 Saga 미들웨어를 사용하기 위해 `reducers`, `sagas` 폴더에 각각 `rootReducer`와 `rootSaga`로 각 리듀서와 사가를 합쳤고 `store`폴더에서 스토어 설정을 하였다.
 - 넥스트 자체에서 Provider로 감싸주기 때문에 보통의 리액트처럼 최상단 컴포넌트를 Provider로 감싸지 않아도 되었다.
 ```javascript
 const configureStore = () => {
