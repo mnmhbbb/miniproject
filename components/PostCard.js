@@ -50,7 +50,7 @@ const PostCard = ({ post }) => {
           ),
         ]}
       >
-        <Skeleton loading={loadPostLoading}>
+        <Skeleton loading={loadPostLoading} avatar>
           <Meta
             avatar={<Avatar>{post.user.nickname[0]}</Avatar>}
             title={post.user.nickname}
