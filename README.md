@@ -1,6 +1,6 @@
 # 넥스트, 리덕스 사가를 사용한 미니프로젝트
 - 기간: 21.04.04 ~ 21.04.06 (3일)
-- `Next.js`, `Redux`, `Redux-Saga` 인강을 수강하고, 복습하기 위해 작은 프로젝트를 만들었다.
+- 'React로 NodeBird SNS 만들기' 강의를 통해 `Next.js`, `Redux`, `Redux-Saga`를 배웠고, 복습을 위해 작은 프로젝트를 만들었다.
 - 사용한 기술 및 도구:   
 `Next.js`, `Redux`, `Redux-Saga`, `immer`, `Styled-components`, `shortid`, `faker`, `ESlint`, `Prettier` 등
 ## 주요 특징
