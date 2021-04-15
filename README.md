@@ -29,6 +29,7 @@ const wrapper = createWrapper(configureStore, {
 });
 ```
 - index.js 홈 화면에서 useEffect를 통해 처음 화면이 렌더되었을 때 바로 더미데이터를 불러오게 설정하였고, 스크롤을 끝부분까지 내리면 자동으로 다음 데이터를 불러오게 구현하였다.
+- 이때 antd에 있는 스켈레톤 UI 속성을 사용하여 데이터가 실제로 렌더링되기 전에 부드럽게 연결되도록 하였다.
 ```javascript
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -140,7 +141,7 @@ export default (state = initialState, action) =>
 ```
 - 실행되는 순서는 위와 같다.
 - Saga는 액션을 모니터하고 있다가, 요청 액션이 발생했을 때 콜백함수를 실행한다.
-- 이때 `throttle`함수를 통해 5초의 제한시간을 줬다.
+- 이때 `throttle`함수를 통해 5초의 제한시간을 줬다. 무한으로 액션 요청이 가지 않도록 중복을 방지하기 위함이다.
 - 콜백함수는 api에 요청을 보내고 결과에 따라 또 다른 성공/실패 액션을 디스패치하는데, 현재는 서버에 연결하지 않았기 때문에 delay 이펙트함수로 대체하였다.
 - 성공 상태가 되면 성공에 대한 액션(LOAD_POSTS_SUCCESS)과 더미데이터 5개를 dispatch 한다.
 - 그러면 reducer 함수에서 해당 액션에 따른 state 값을 갱신하는데, 이때 `immer` 라이브러리를 사용하여 불변성 관리를 쉽게 할 수 있었다.
@@ -159,7 +160,7 @@ export const generateDummyPost = (number) =>
       content: faker.lorem.paragraph(),
     }));
 ```
-### 3. `eslint`를 통해 코드의 문법적인 오류나 안티 패턴을 찾고, `prettier`를 통해 코드를 보기 좋게 포맷팅하였다.
+### 3. `eslint`를 통해 코드의 문법적인 오류를 찾고, `prettier`를 통해 코드를 보기 좋게 포맷팅하였다.
 - `npm i -D eslint eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks babel-eslint eslint-plugin-jsx-a11y`
 - eslint의 리액트 훅스, 접근성, import/export 구문 지원을 위해 라이브러리를 설치한다.
 - 그런 다음 `.eslintrc` 파일을 생성하여 다음과 같이 설정하였다.
