@@ -68,7 +68,7 @@ export default (state = initialState, action) =>
       case LOAD_POSTS_SUCCESS:
         draft.loadPostLoading = false;
         draft.loadPostDone = true;
-        draft.mainPosts = action.data.concat(draft.mainPosts);
+        draft.mainPosts = draft.mainPosts.concat(action.data);
         draft.morePosts = draft.mainPosts.length < 50;
         break;
       case LOAD_POSTS_FAILURE:
