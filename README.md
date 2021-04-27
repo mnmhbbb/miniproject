@@ -3,6 +3,7 @@
 - 'React로 NodeBird SNS 만들기' 강의를 통해 `Next.js`, `Redux`, `Redux-Saga`를 배웠고, 복습을 위해 작은 프로젝트를 만들었다.
 - 사용한 기술 및 도구:   
 `Next.js`, `Redux`, `Redux-Saga`, `immer`, `Styled-components`, `shortid`, `faker`, `ESlint`, `Prettier` 등
+- https://miniland.netlify.app/
 ## 주요 특징
 ### 1. 기본 구조
 #### 1.1 크게 `/pages`와 `/components` 폴더로 나누어 관리
