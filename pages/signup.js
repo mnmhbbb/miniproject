@@ -10,22 +10,16 @@ import { SIGN_UP_REQUEST } from '../reducers/user';
 import styled from 'styled-components';
 
 const SignUpStyle = styled.div`
-  width: 100%;
   height: 100vh;
   padding: 1rem;
+  width: 300px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const FormItem = styled(Form.Item)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  & Input {
-    width: 100%;
+  & Button {
+    width: 300px;
   }
 `;
 

@@ -4,7 +4,7 @@ import produce from 'immer';
 
 // 게시글 더미데이터
 const dummyPost = (data) => ({
-  id: data.id,
+  id: 'mypost',
   content: data.content,
   user: {
     id: 1,
@@ -38,6 +38,9 @@ export const initialState = {
   removePostLoading: false, // 게시글 삭제
   removePostDone: false,
   removePostError: null,
+  updatePostLoading: false, // 게시글 수정
+  updatePostDone: false,
+  updatePostError: null,
 };
 
 export const LOAD_POSTS_REQUEST = 'LOAD_POSTS_REQUEST';
@@ -51,6 +54,10 @@ export const ADD_POST_FAILURE = 'ADD_POST_FAILURE';
 export const REMOVE_POST_REQUEST = 'REMOVE_POST_REQUEST';
 export const REMOVE_POST_SUCCESS = 'REMOVE_POST_SUCCESS';
 export const REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
+
+export const UPDATE_POST_REQUEST = 'UPDATE_POST_REQUEST';
+export const UPDATE_POST_SUCCESS = 'UPDATE_POST_SUCCESS';
+export const UPDATE_POST_FAILURE = 'UPDATE_POST_FAILURE';
 
 export const AddpostRequestAction = (data) => ({
   type: ADD_POST_REQUEST,
@@ -103,6 +110,16 @@ export default (state = initialState, action) =>
         draft.removePostLoading = false;
         draft.removePostError = action.error;
         break;
+      case UPDATE_POST_REQUEST:
+        draft.updatePostLoading = true;
+        break;
+      case UPDATE_POST_SUCCESS:
+        draft.updatePostLoading = false;
+        draft.updatePostDone = true;
+        draft.mainPosts.find((v) => v.id === 'mypost').content = action.data.content;
+      case UPDATE_POST_FAILURE:
+        draft.updatePostLoading = false;
+        draft.updatePostError = action.error;
       default:
         break;
     }

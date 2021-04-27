@@ -11,7 +11,6 @@ import useInput from '../hooks/useInput';
 import styled from 'styled-components';
 
 const LoginPageStyle = styled.div`
-  width: 100%;
   height: 100vh;
   padding: 1rem;
   display: flex;
@@ -32,6 +31,9 @@ const LoginBtn = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  & Button {
+    width: 300px;
+  }
 `;
 
 const LoginPage = () => {
@@ -42,7 +44,6 @@ const LoginPage = () => {
   const { logInLoading } = useSelector((store) => store.user);
 
   const onFinish = useCallback(() => {
-    console.log(email, password);
     dispatch(loginRequestAction({ email, password }));
     router.push('/');
   }, [email, password]);
@@ -68,6 +69,7 @@ const LoginPage = () => {
           name="normal_login"
           onFinish={onFinish}
           className="login-form"
+          style={{ width: '300px' }}
           initialValues={{
             remember: true,
           }}
@@ -106,16 +108,6 @@ const LoginPage = () => {
               placeholder="비밀번호"
             />
           </Form.Item>
-          <Form.Item>
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox>로그인 유지</Checkbox>
-            </Form.Item>
-
-            <a className="login-form-forgot" href="">
-              비밀번호를 잊어버리셨나요?
-            </a>
-          </Form.Item>
-
           <LoginBtn>
             <Button
               type="primary"
